@@ -10,6 +10,15 @@ var users = require('./routes/users');
 
 var app = express();
 
+//use mongoose to connect to mongodb
+var mongoose = require('mongoose');
+var conn = mongoose.connection;
+
+//link to config file
+var config = require('./config/globals');
+
+conn.open(config.db);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
